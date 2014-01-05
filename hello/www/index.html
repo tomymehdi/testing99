@@ -28,10 +28,13 @@
     </head>
     <body>
         <div class="app">
-            <h1>Groupup</h1>
+            <h1>Groupapp</h1>
             <button type="button" id="getGpsPos">Click Me For Get GPS pos!</button>
             <div id="gpsPos">HEY</div>
-            <button type="button" id="loginWithFacebook"></button>
+            <div id="fb-root"></div>
+            <fb:login-button id="signInFacebook" show-faces="true" width="500" max-rows="1"></fb:login-button>
+            <button type="button" id="logoutFacebook">Logout from Facebook</button>
+            <button type="button" id="singInTwitter"></button>
         </div>
         <script type="text/javascript" src="js/jQuery.js"></script>
         <script type="text/javascript" src="js/index.js"></script>

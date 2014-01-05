@@ -113,16 +113,30 @@ h1 {
     -webkit-animation:fade 3000ms infinite;
 }
 
-#loginWithFacebook {
-    background:url(../img/facebook_login_buttons/active_404.png) no-repeat top;
+#singInFacebook {
+    /*background:url(../img/facebook_login_buttons/active_404.png) no-repeat top;
     display: block; 
     width: 200px; 
-    height: 43px;
+    height: 43px;*/
 }
 
-#loginWithFacebook:active {
-    background:url(../img/facebook_login_buttons/pressed_404.png) no-repeat top;
+#singInFacebook:active {
+    /*background:url(../img/facebook_login_buttons/pressed_404.png) no-repeat top;
+    display: block; 
+    width: 200px; 
+    height: 43px;*/
+}
+
+#singInTwitter {
+    background: url(../img/sign-in-with-twitter-gray.png) no-repeat top;
+    display: block; 
+    width: 170px; 
+    height: 28px;
+}
+
+/*#singInWithTwitter:active {
+    background: url(../img/sign-in-with-twitter-gray.png) no-repeat top;
     display: block; 
     width: 200px; 
     height: 43px;
-}
+}*/
