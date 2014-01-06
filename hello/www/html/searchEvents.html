@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="../css/searchEvents.css" />
+        <title>Hello World</title>
+    </head>
+    <body>
+        <div class="app">
+            <button type="button" id="profile">Profile</button>
+            <button type="button" id="contactsAndGroups">Contacts and Groups</button>
+            <button type="button" id="chat">Chat</button>
+            <button type="button" id="croupApp">Active events/chats</button>
+            <h1>Croupapp</h1>
+            <h2>Trendings</h2>
+            #futbol
+            #party
+            #practiceLanguages
+            #touristic
+            <form action="search">
+                <h2>Insert hashtags (#text)</h2>
+                <input type="search" name="hashtags" required="required"></input>
+                <h2>Insert date</h2>
+                <input type="date" id="searchDate" name="eventDate" required="required"></input>
+                <input type="submit" name="search" value="Search">
+            </form>
+        </div>
+        <script type="text/javascript" src="../js/jQuery.js"></script>
+        <script type="text/javascript" src="../js/js.js"></script>
+        <script type="text/javascript" src="../js/searchEvents.js"></script>
+    </body>
+</html>
