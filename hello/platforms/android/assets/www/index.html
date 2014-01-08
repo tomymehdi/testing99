@@ -1,102 +1,48 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+        <!--/*SCRIPTS*/ -->
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <title>Index</title>
     </head>
     <body>
         <div class="app">
-            <h1>Groupup</h1>
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default">Chat</button>
+                    <button type="button" class="btn btn-default">Active events</button>
+                    <button type="button" class="btn btn-default">Contacts and groups</button>
+                    <button type="button" class="btn btn-default">Profile</button>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default">Search events</button>
+                </div>
+            </nav>
+            <h1>Croupapp</h1>
             <button type="button" id="getGpsPos">Click Me For Get GPS pos!</button>
-            <div id="gpsPos">HEY</div>
+            <div id="gpsPos">
+                HEY
+            </div>
             <div id="fb-root"></div>
-            <fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
+            <fb:login-button id="signInFacebook" show-faces="true" width="500" max-rows="1"></fb:login-button>
+            <div>
+                <button type="button" id="logoutFacebook">Logout from Facebook</button>
+            </div>
         </div>
+
+        <!--/*SCRIPTS*/ -->
         <script type="text/javascript" src="js/jQuery.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/js.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
             app.initialize();
-        </script>
-
-        <script>
-          window.fbAsyncInit = function() {
-          FB.init({
-            appId      : 501908143218766,
-            status     : true, // check login status
-            cookie     : true, // enable cookies to allow the server to access the session
-            xfbml      : true  // parse XFBML
-          });
-
-          // Here we subscribe to the auth.authResponseChange JavaScript event. This event is fired
-          // for any authentication related change, such as login, logout or session refresh. This means that
-          // whenever someone who was previously logged out tries to log in again, the correct case below 
-          // will be handled. 
-          FB.Event.subscribe('auth.authResponseChange', function(response) {
-            // Here we specify what we do with the response anytime this event occurs. 
-            if (response.status === 'connected') {
-              // The response object is returned with a status field that lets the app know the current
-              // login status of the person. In this case, we're handling the situation where they 
-              // have logged in to the app.
-              testAPI();
-            } else if (response.status === 'not_authorized') {
-              // In this case, the person is logged into Facebook, but not into the app, so we call
-              // FB.login() to prompt them to do so. 
-              // In real-life usage, you wouldn't want to immediately prompt someone to login 
-              // like this, for two reasons:
-              // (1) JavaScript created popup windows are blocked by most browsers unless they 
-              // result from direct interaction from people using the app (such as a mouse click)
-              // (2) it is a bad experience to be continually prompted to login upon page load.
-              FB.login();
-            } else {
-              // In this case, the person is not logged into Facebook, so we call the login() 
-              // function to prompt them to do so. Note that at this stage there is no indication
-              // of whether they are logged into the app. If they aren't then they'll see the Login
-              // dialog right after they log in to Facebook. 
-              // The same caveats as above apply to the FB.login() call here.
-              FB.login();
-            }
-          });
-          };
-
-          // Load the SDK asynchronously
-          (function(d){
-           var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-           if (d.getElementById(id)) {return;}
-           js = d.createElement('script'); js.id = id; js.async = true;
-           js.src = "http://connect.facebook.net/en_US/all.js";
-           ref.parentNode.insertBefore(js, ref);
-          }(document));
-
-          // Here we run a very simple test of the Graph API after login is successful. 
-          // This testAPI() function is only called in those cases. 
-          function testAPI() {
-            console.log('Welcome!  Fetching your information.... ');
-            FB.api('/me', function(response) {
-              console.log('Good to see you, ' + response.name + '.');
-            });
-          }
         </script>
     </body>
 </html>

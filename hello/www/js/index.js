@@ -142,7 +142,8 @@ var app = {
 
     //FACEBOOK LOGOUT
     $('#logoutFacebook').click(function() {
-        FB.logout();
+        var a = FB.logout();
+        setTimeout("location.reload()",2000);
     });
 
     
