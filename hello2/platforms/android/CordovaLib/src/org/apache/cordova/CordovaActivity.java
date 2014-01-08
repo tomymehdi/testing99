@@ -52,7 +52,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.webkit.ValueCallback;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
@@ -300,7 +299,8 @@ public class CordovaActivity extends Activity implements CordovaInterface {
      *
      * @return the Activity
      */
-    public Activity getActivity() {
+    @Override
+	public Activity getActivity() {
         return this;
     }
 
@@ -377,7 +377,7 @@ public class CordovaActivity extends Activity implements CordovaInterface {
 
         if (this.getBooleanProperty("DisallowOverscroll", false)) {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.GINGERBREAD) {
-                this.appView.setOverScrollMode(CordovaWebView.OVER_SCROLL_NEVER);
+                this.appView.setOverScrollMode(View.OVER_SCROLL_NEVER);
             }
         }
 
@@ -855,7 +855,8 @@ public class CordovaActivity extends Activity implements CordovaInterface {
         final CordovaActivity me = this;
         this.spinnerDialog = ProgressDialog.show(CordovaActivity.this, title, message, true, true,
                 new DialogInterface.OnCancelListener() {
-                    public void onCancel(DialogInterface dialog) {
+                    @Override
+					public void onCancel(DialogInterface dialog) {
                         me.spinnerDialog = null;
                     }
                 });
@@ -888,7 +889,8 @@ public class CordovaActivity extends Activity implements CordovaInterface {
      * @param intent            The intent to start
      * @param requestCode       The request code that is passed to callback to identify the activity
      */
-    public void startActivityForResult(CordovaPlugin command, Intent intent, int requestCode) {
+    @Override
+	public void startActivityForResult(CordovaPlugin command, Intent intent, int requestCode) {
         this.activityResultCallback = command;
         this.activityResultKeepRunning = this.keepRunning;
 
@@ -940,7 +942,8 @@ public class CordovaActivity extends Activity implements CordovaInterface {
         }
     }
 
-    public void setActivityResultCallback(CordovaPlugin plugin) {
+    @Override
+	public void setActivityResultCallback(CordovaPlugin plugin) {
         this.activityResultCallback = plugin;
     }
 
@@ -961,7 +964,8 @@ public class CordovaActivity extends Activity implements CordovaInterface {
 
             // Load URL on UI thread
             me.runOnUiThread(new Runnable() {
-                public void run() {
+                @Override
+				public void run() {
                     // Stop "app loading" spinner if showing
                     me.spinnerStop();
                     me.appView.showWebPage(errorUrl, false, true, null);
@@ -972,7 +976,8 @@ public class CordovaActivity extends Activity implements CordovaInterface {
         else {
             final boolean exit = !(errorCode == WebViewClient.ERROR_HOST_LOOKUP);
             me.runOnUiThread(new Runnable() {
-                public void run() {
+                @Override
+				public void run() {
                     if (exit) {
                         me.appView.setVisibility(View.GONE);
                         me.displayError("Application Error", description + " (" + failingUrl + ")", "OK", exit);
@@ -993,7 +998,8 @@ public class CordovaActivity extends Activity implements CordovaInterface {
     public void displayError(final String title, final String message, final String button, final boolean exit) {
         final CordovaActivity me = this;
         me.runOnUiThread(new Runnable() {
-            public void run() {
+            @Override
+			public void run() {
                 try {
                     AlertDialog.Builder dlg = new AlertDialog.Builder(me);
                     dlg.setMessage(message);
@@ -1001,7 +1007,8 @@ public class CordovaActivity extends Activity implements CordovaInterface {
                     dlg.setCancelable(false);
                     dlg.setPositiveButton(button,
                             new AlertDialog.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
+                                @Override
+								public void onClick(DialogInterface dialog, int which) {
                                     dialog.dismiss();
                                     if (exit) {
                                         me.endActivity();
@@ -1097,7 +1104,8 @@ public class CordovaActivity extends Activity implements CordovaInterface {
         final CordovaActivity that = this;
 
         Runnable runnable = new Runnable() {
-            public void run() {
+            @Override
+			public void run() {
                 // Get reference to display
                 Display display = getWindowManager().getDefaultDisplay();
 
@@ -1126,7 +1134,8 @@ public class CordovaActivity extends Activity implements CordovaInterface {
                 // Set Runnable to remove splash screen just in case
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
-                    public void run() {
+                    @Override
+					public void run() {
                         removeSplashScreen();
                     }
                 }, time);
@@ -1172,7 +1181,8 @@ public class CordovaActivity extends Activity implements CordovaInterface {
      * @param data          The message data
      * @return              Object or null
      */
-    public Object onMessage(String id, Object data) {
+    @Override
+	public Object onMessage(String id, Object data) {
         LOG.d(TAG, "onMessage(" + id + "," + data + ")");
         if ("splashscreen".equals(id)) {
             if ("hide".equals(data.toString())) {
@@ -1206,11 +1216,13 @@ public class CordovaActivity extends Activity implements CordovaInterface {
         return null;
     }
 
-    public ExecutorService getThreadPool() {
+    @Override
+	public ExecutorService getThreadPool() {
         return threadPool;
     }
     
-    protected void onSaveInstanceState(Bundle outState)
+    @Override
+	protected void onSaveInstanceState(Bundle outState)
     {
         super.onSaveInstanceState(outState);
         if(this.activityResultCallback != null)

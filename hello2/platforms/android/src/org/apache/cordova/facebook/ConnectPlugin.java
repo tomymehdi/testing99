@@ -18,11 +18,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import com.facebook.android.DialogError;
-import com.facebook.android.Facebook;
-import com.facebook.android.Facebook.DialogListener;
-import com.facebook.android.FacebookError;
-
 public class ConnectPlugin extends CordovaPlugin {
 
     public static final String SINGLE_SIGN_ON_DISABLED = "service_disabled";
@@ -105,7 +100,8 @@ public class ConnectPlugin extends CordovaPlugin {
                 cordova.setActivityResultCallback(this);
                 this.permissions = permissions;
                 Runnable runnable = new Runnable() {
-                    public void run() {
+                    @Override
+					public void run() {
                         me.facebook.authorize(cordova.getActivity(), me.permissions, new AuthorizeListener(me));
                     };
                 };
@@ -177,7 +173,8 @@ public class ConnectPlugin extends CordovaPlugin {
                 }
                 this.paramBundle =  new Bundle(collect);
                 Runnable runnable = new Runnable() {
-                    public void run() {
+                    @Override
+					public void run() {
                         me.facebook.dialog (me.cordova.getActivity(), me.method , me.paramBundle , new UIDialogListener(me));
                     };
                 };
@@ -238,23 +235,27 @@ public class ConnectPlugin extends CordovaPlugin {
             this.fba = fba;
         }
 
-        public void onComplete(Bundle values) {
+        @Override
+		public void onComplete(Bundle values) {
             //  Handle a successful dialog
             Log.d(TAG,values.toString());
             this.fba.cb.success();
         }
 
-        public void onFacebookError(FacebookError e) {
+        @Override
+		public void onFacebookError(FacebookError e) {
            Log.d(TAG, "facebook error");
            this.fba.cb.error("Facebook error: " + e.getMessage());
        }
 
-       public void onError(DialogError e) {
+       @Override
+	public void onError(DialogError e) {
            Log.d(TAG, "other error");
            this.fba.cb.error("Dialog error: " + e.getMessage());
        }
 
-       public void onCancel() {
+       @Override
+	public void onCancel() {
            Log.d(TAG, "cancel");
            this.fba.cb.error("Cancelled");
        }
@@ -268,7 +269,8 @@ public class ConnectPlugin extends CordovaPlugin {
             this.fba = fba;
         }
 
-        public void onComplete(Bundle values) {
+        @Override
+		public void onComplete(Bundle values) {
             //  Handle a successful login
 
             String token = this.fba.facebook.getAccessToken();
@@ -280,7 +282,8 @@ public class ConnectPlugin extends CordovaPlugin {
             Log.d(TAG, "authorized");
 
             Thread t = new Thread(new Runnable() {
-                public void run() {
+                @Override
+				public void run() {
                     try {
                         JSONObject o = new JSONObject(fba.facebook.request("/me"));
                         fba.userId = o.getString("id");
@@ -300,17 +303,20 @@ public class ConnectPlugin extends CordovaPlugin {
             t.start();
         }
 
-        public void onFacebookError(FacebookError e) {
+        @Override
+		public void onFacebookError(FacebookError e) {
             Log.d(TAG, "facebook error");
             this.fba.cb.error("Facebook error: " + e.getMessage());
         }
 
-        public void onError(DialogError e) {
+        @Override
+		public void onError(DialogError e) {
             Log.d(TAG, "other error");
             this.fba.cb.error("Dialog error: " + e.getMessage());
         }
 
-        public void onCancel() {
+        @Override
+		public void onCancel() {
             Log.d(TAG, "cancel");
             this.fba.cb.error("Cancelled");
         }

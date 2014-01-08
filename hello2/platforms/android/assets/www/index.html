@@ -18,9 +18,9 @@
         <!-- cordova -->
 		<script src="cordova.js"></script>
 	    <!-- cordova facebook plugin -->
-		<script src="cdv-plugin-fb-connect.js"></script>
+		<script src="js/cdv-plugin-fb-connect.js"></script>
 	    <!-- facebook js sdk -->
-		<script src="facebook_js_sdk.js"></script>
+		<script src="js/facebook_js_sdk.js"></script>
         
 		<script>
              <!-- These are the notifications that are displayed to the user through pop-ups if the above JS files does not exist in the same directory-->
@@ -145,7 +145,7 @@
             document.addEventListener('deviceready', function() {
                                       try {
                                       alert('Device is ready! Make sure you set your app_id below this alert.');
-                                      FB.init({ appId: "appid", nativeInterface: CDV.FB, useCachedDialogs: false });
+                                      FB.init({ appId: "501908143218766", nativeInterface: CDV.FB, useCachedDialogs: false });
                                       document.getElementById('data').innerHTML = "";
                                       } catch (e) {
                                       alert(e);

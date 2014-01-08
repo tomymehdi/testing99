@@ -33,11 +33,11 @@ import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.PluginEntry;
 import org.apache.cordova.PluginResult;
 import org.json.JSONException;
+import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.content.Intent;
 import android.content.res.XmlResourceParser;
-
 import android.net.Uri;
 import android.os.Debug;
 import android.util.Log;
@@ -126,8 +126,8 @@ public class PluginManager {
         String service = "", pluginClass = "", paramType = "";
         boolean onload = false;
         boolean insideFeature = false;
-        while (eventType != XmlResourceParser.END_DOCUMENT) {
-            if (eventType == XmlResourceParser.START_TAG) {
+        while (eventType != XmlPullParser.END_DOCUMENT) {
+            if (eventType == XmlPullParser.START_TAG) {
                 String strNode = xml.getName();
                 if (strNode.equals("url-filter")) {
                     Log.w(TAG, "Plugin " + service + " is using deprecated tag <url-filter>");
@@ -153,7 +153,7 @@ public class PluginManager {
                         onload = "true".equals(xml.getAttributeValue(null, "value"));
                 }
             }
-            else if (eventType == XmlResourceParser.END_TAG)
+            else if (eventType == XmlPullParser.END_TAG)
             {
                 String strNode = xml.getName();
                 if (strNode.equals("feature") || strNode.equals("plugin"))
@@ -218,7 +218,8 @@ public class PluginManager {
         if (numPendingUiExecs.get() > 0) {
             numPendingUiExecs.getAndIncrement();
             this.ctx.getActivity().runOnUiThread(new Runnable() {
-                public void run() {
+                @Override
+				public void run() {
                     execHelper(service, action, callbackId, rawArgs);
                     numPendingUiExecs.getAndDecrement();
                 }
@@ -446,7 +447,8 @@ public class PluginManager {
                 // thread (and hence after onPageStarted) until there are no more pending exec calls remaining.
                 numPendingUiExecs.getAndIncrement();
                 ctx.getActivity().runOnUiThread(new Runnable() {
-                    public void run() {
+                    @Override
+					public void run() {
                         numPendingUiExecs.getAndDecrement();
                     }
                 });

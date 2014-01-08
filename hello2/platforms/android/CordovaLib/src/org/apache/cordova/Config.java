@@ -20,21 +20,17 @@
 package org.apache.cordova;
 
 import java.io.IOException;
-
 import java.util.Locale;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.cordova.LOG;
-
+import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.Activity;
-
 import android.content.res.XmlResourceParser;
 import android.graphics.Color;
-
 import android.util.Log;
 
 public class Config {
@@ -86,8 +82,8 @@ public class Config {
 
         XmlResourceParser xml = action.getResources().getXml(id);
         int eventType = -1;
-        while (eventType != XmlResourceParser.END_DOCUMENT) {
-            if (eventType == XmlResourceParser.START_TAG) {
+        while (eventType != XmlPullParser.END_DOCUMENT) {
+            if (eventType == XmlPullParser.START_TAG) {
                 String strNode = xml.getName();
 
                 if (strNode.equals("access")) {

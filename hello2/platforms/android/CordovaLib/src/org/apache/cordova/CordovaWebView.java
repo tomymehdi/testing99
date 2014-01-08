@@ -464,7 +464,8 @@ public class CordovaWebView extends WebView {
 
         // Timeout error method
         final Runnable loadError = new Runnable() {
-            public void run() {
+            @Override
+			public void run() {
                 me.stopLoading();
                 LOG.e(TAG, "CordovaWebView: TIMEOUT ERROR!");
                 if (viewClient != null) {
@@ -475,7 +476,8 @@ public class CordovaWebView extends WebView {
 
         // Timeout timer method
         final Runnable timeoutCheck = new Runnable() {
-            public void run() {
+            @Override
+			public void run() {
                 try {
                     synchronized (this) {
                         wait(loadUrlTimeoutValue);
@@ -493,7 +495,8 @@ public class CordovaWebView extends WebView {
 
         // Load url
         this.cordova.getActivity().runOnUiThread(new Runnable() {
-            public void run() {
+            @Override
+			public void run() {
                 Thread thread = new Thread(timeoutCheck);
                 thread.start();
                 me.loadUrlNow(url);
@@ -543,7 +546,8 @@ public class CordovaWebView extends WebView {
     }
     
     
-    public void onScrollChanged(int l, int t, int oldl, int oldt)
+    @Override
+	public void onScrollChanged(int l, int t, int oldl, int oldt)
     {
         super.onScrollChanged(l, t, oldl, oldt);
         //We should post a message that the scroll changed
@@ -989,7 +993,8 @@ public class CordovaWebView extends WebView {
         return mCustomView != null;
     }
     
-    public WebBackForwardList restoreState(Bundle savedInstanceState)
+    @Override
+	public WebBackForwardList restoreState(Bundle savedInstanceState)
     {
         WebBackForwardList myList = super.restoreState(savedInstanceState);
         Log.d(TAG, "WebView restoration crew now restoring!");

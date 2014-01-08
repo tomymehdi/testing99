@@ -18,7 +18,6 @@
 */
 package org.apache.cordova;
 
-import java.io.ByteArrayInputStream;
 import java.util.Hashtable;
 
 import org.apache.cordova.CordovaInterface;
@@ -39,7 +38,6 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.HttpAuthHandler;
 import android.webkit.SslErrorHandler;
-import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -312,11 +310,13 @@ public class CordovaWebViewClient extends WebViewClient {
         // Make app visible after 2 sec in case there was a JS error and Cordova JS never initialized correctly
         if (this.appView.getVisibility() == View.INVISIBLE) {
             Thread t = new Thread(new Runnable() {
-                public void run() {
+                @Override
+				public void run() {
                     try {
                         Thread.sleep(2000);
                         cordova.getActivity().runOnUiThread(new Runnable() {
-                            public void run() {
+                            @Override
+							public void run() {
                                 appView.postMessage("spinner", "stop");
                             }
                         });
