@@ -4,6 +4,7 @@
     <feature name="App">
         <param name="android-package" value="org.apache.cordova.App" />
     </feature>
+
     <name>Hello Cordova</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -13,4 +14,7 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <plugins>
+    	<plugin name="org.apache.cordova.facebook.Connect" value="org.apache.cordova.facebook.ConnectPlugin" />
+    </plugins>
 </widget>
