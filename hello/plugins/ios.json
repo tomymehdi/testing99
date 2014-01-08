@@ -1,1 +1,1 @@
-{"prepare_queue":{"installed":[],"uninstalled":[]},"config_munge":{},"installed_plugins":{},"dependent_plugins":{}}
+{"prepare_queue":{"installed":[],"uninstalled":[]},"config_munge":{"framework":{"libsqlite3.dylib":{},"Social.framework":{},"Accounts.framework":{},"AdSupport.framework":{},"Security.framework":{}},"config.xml":{"/*":{},"plugins":{}},"*-Info.plist":{"FacebookAppID":{},"FacebookDisplayName":{},"CFBundleURLTypes":{}}},"installed_plugins":{},"dependent_plugins":{}}

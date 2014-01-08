@@ -13,27 +13,70 @@
     </head>
     <body>
         <div class="app">
+            <!-- cambiar el min height 50 a nada -->
             <nav class="navbar navbar-default" role="navigation">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default">Chat</button>
-                    <button type="button" class="btn btn-default">Active events</button>
-                    <button type="button" class="btn btn-default">Contacts and groups</button>
-                    <button type="button" class="btn btn-default">Profile</button>
-                </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default">Search events</button>
-                </div>
+                <ul class="nav nav-pills pull-left">
+                    <!-- pubnub para el chat, increible -->
+                    <li class="active">
+                        <a href="#">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                        <span class="badge">3</span></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                        <span class="glyphicon glyphicon-align-center"></span>
+                        <span class="badge">2</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <span class="glyphicon glyphicon-user"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a hred='#'>
+                        <span class="glyphicon glyphicon-user"></span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav nav-pills pull-right">
+                    <li>
+                        <a hred='#'>
+                        <span class="glyphicon glyphicon-globe"></span>
+                        </a>
+                    </li>
+                </ul>
             </nav>
+
+            <ul class="list-group text-left">
+                <li class="list-group-item">
+                    Marc
+                    <span class="badge">14</span>
+                </li>
+                <li class="list-group-item">
+                    Terror
+                    <span class="badge">14</span>
+                </li>
+            </ul>
+
+
+            <!-- Para la pagina si no logeaste todavia -->
             <h1>Croupapp</h1>
+            <h1>GPS</h1>
             <button type="button" id="getGpsPos">Click Me For Get GPS pos!</button>
             <div id="gpsPos">
                 HEY
             </div>
+            <h1>Facebook</h1>
             <div id="fb-root"></div>
             <fb:login-button id="signInFacebook" show-faces="true" width="500" max-rows="1"></fb:login-button>
             <div>
                 <button type="button" id="logoutFacebook">Logout from Facebook</button>
             </div>
+            <h1>Chat</h1>
+
         </div>
 
         <!--/*SCRIPTS*/ -->

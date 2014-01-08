@@ -24,4 +24,6 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <plugins>
+    </plugins>
 </widget>
