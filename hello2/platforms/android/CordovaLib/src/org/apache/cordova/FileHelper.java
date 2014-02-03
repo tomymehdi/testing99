@@ -26,8 +26,12 @@ import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.LOG;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.charset.Charset;
 import java.util.Locale;
 
 @Deprecated // Deprecated in 3.1. To be removed in 4.0.

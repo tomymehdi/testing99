@@ -117,22 +117,19 @@ public class CordovaChromeClient extends WebChromeClient {
         dlg.setCancelable(true);
         dlg.setPositiveButton(android.R.string.ok,
                 new AlertDialog.OnClickListener() {
-                    @Override
-					public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(DialogInterface dialog, int which) {
                         result.confirm();
                     }
                 });
         dlg.setOnCancelListener(
                 new DialogInterface.OnCancelListener() {
-                    @Override
-					public void onCancel(DialogInterface dialog) {
+                    public void onCancel(DialogInterface dialog) {
                         result.cancel();
                     }
                 });
         dlg.setOnKeyListener(new DialogInterface.OnKeyListener() {
             //DO NOTHING
-            @Override
-			public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK)
                 {
                     result.confirm();
@@ -163,29 +160,25 @@ public class CordovaChromeClient extends WebChromeClient {
         dlg.setCancelable(true);
         dlg.setPositiveButton(android.R.string.ok,
                 new DialogInterface.OnClickListener() {
-                    @Override
-					public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(DialogInterface dialog, int which) {
                         result.confirm();
                     }
                 });
         dlg.setNegativeButton(android.R.string.cancel,
                 new DialogInterface.OnClickListener() {
-                    @Override
-					public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(DialogInterface dialog, int which) {
                         result.cancel();
                     }
                 });
         dlg.setOnCancelListener(
                 new DialogInterface.OnCancelListener() {
-                    @Override
-					public void onCancel(DialogInterface dialog) {
+                    public void onCancel(DialogInterface dialog) {
                         result.cancel();
                     }
                 });
         dlg.setOnKeyListener(new DialogInterface.OnKeyListener() {
             //DO NOTHING
-            @Override
-			public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK)
                 {
                     result.cancel();
@@ -276,16 +269,14 @@ public class CordovaChromeClient extends WebChromeClient {
             dlg.setCancelable(false);
             dlg.setPositiveButton(android.R.string.ok,
                     new DialogInterface.OnClickListener() {
-                        @Override
-						public void onClick(DialogInterface dialog, int which) {
+                        public void onClick(DialogInterface dialog, int which) {
                             String usertext = input.getText().toString();
                             res.confirm(usertext);
                         }
                     });
             dlg.setNegativeButton(android.R.string.cancel,
                     new DialogInterface.OnClickListener() {
-                        @Override
-						public void onClick(DialogInterface dialog, int which) {
+                        public void onClick(DialogInterface dialog, int which) {
                             res.cancel();
                         }
                     });

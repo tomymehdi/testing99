@@ -42,8 +42,7 @@ public class App extends CordovaPlugin {
      * @param callbackContext   The callback context from which we were invoked.
      * @return                  A PluginResult object with a status and message.
      */
-    @Override
-	public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         PluginResult.Status status = PluginResult.Status.OK;
         String result = "";
 
@@ -56,8 +55,7 @@ public class App extends CordovaPlugin {
                 // I recommend we change the name of the Message as spinner/stop is not
                 // indicative of what this actually does (shows the webview).
                 cordova.getActivity().runOnUiThread(new Runnable() {
-                    @Override
-					public void run() {
+                    public void run() {
                         webView.postMessage("spinner", "stop");
                     }
                 });
@@ -100,8 +98,7 @@ public class App extends CordovaPlugin {
      */
     public void clearCache() {
         cordova.getActivity().runOnUiThread(new Runnable() {
-            @Override
-			public void run() {
+            public void run() {
                 webView.clearCache(true);
             }
         });
@@ -141,13 +138,13 @@ public class App extends CordovaPlugin {
 
                     }
                     else if (value.getClass().equals(String.class)) {
-                        params.put(key, value);
+                        params.put(key, (String)value);
                     }
                     else if (value.getClass().equals(Boolean.class)) {
-                        params.put(key, value);
+                        params.put(key, (Boolean)value);
                     }
                     else if (value.getClass().equals(Integer.class)) {
-                        params.put(key, value);
+                        params.put(key, (Integer)value);
                     }
                 }
             }
@@ -180,8 +177,7 @@ public class App extends CordovaPlugin {
      */
     public void backHistory() {
         cordova.getActivity().runOnUiThread(new Runnable() {
-            @Override
-			public void run() {
+            public void run() {
                 webView.backHistory();
             }
         });

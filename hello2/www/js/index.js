@@ -1,21 +1,3 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
 var app = {
     // Application Constructor
     initialize: function() {
@@ -81,8 +63,8 @@ var app = {
         }
     });
 
-    //FACEBOOK LOGIN
-
+    //FACEBOOK LOGIN para paginas web
+/*
     window.fbAsyncInit = function() {
           FB.init({
             appId      : 501908143218766,
@@ -144,6 +126,74 @@ var app = {
     $('#logoutFacebook').click(function() {
         var a = FB.logout();
         //setTimeout("location.reload()",2000);
+    });*/
+
+    //FACEBOOK LOGIN APPS
+
+    // Settings
+    FacebookInAppBrowser.settings.appId = '501908143218766';
+    FacebookInAppBrowser.settings.redirectUrl = 'http://localhost/www/index.html';
+    FacebookInAppBrowser.settings.permissions = 'email';
+
+    // callbacks already defined
+    $('#signInFacebook').click(function() {
+        FacebookInAppBrowser.login(
+            {
+              send: function() {
+                  console.log('login opened');
+              },
+              success: function(access_token) {
+                  console.log('done, access token: ' + access_token);
+              },
+              denied: function() {
+                  console.log('user denied');
+              },
+              complete: function(access_token) {
+                  console.log('window closed');
+                  if(access_token) {
+                      console.log(access_token);
+                  } else {
+                      console.log('no access token');
+                  }
+              },
+              userId: function(userId) {
+                  if(userId) {
+                      console.log(JSON.stringify(userId));
+                  } else {
+                      console.log('no user id');
+                  }
+            }
+        });
     });
+
+    $('#invite').click(function() {
+        FacebookInAppBrowser.invite(inviteText, callback);
+    });
+
+    $('#logoutFacebook').click(function() {
+        FacebookInAppBrowser.logout(callback);
+    });
+
+
+    idString = new Date().getSeconds();
+    var peer = new Peer(idString, {host: 'localhost', port: 9000, debug: 3});
+    peer.on('open', function(id) {
+      console.log('My peer ID is: ' + id);
+    });
+    /*
+    var conn = peer.connect(46);
+    conn.on('open', function() {
+      // Receive messages
+      conn.on('data', function(data) {
+        console.log('Received', data);
+      });
+
+      // Send messages
+      conn.send('Hello!');
+    });
+  */
+
+
+
 
     

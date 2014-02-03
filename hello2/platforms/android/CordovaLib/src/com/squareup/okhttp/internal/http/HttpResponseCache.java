@@ -246,8 +246,7 @@ public final class HttpResponseCache extends ResponseCache implements OkResponse
     return writeSuccessCount;
   }
 
-  @Override
-public synchronized void trackResponse(ResponseSource source) {
+  public synchronized void trackResponse(ResponseSource source) {
     requestCount++;
 
     switch (source) {
@@ -261,8 +260,7 @@ public synchronized void trackResponse(ResponseSource source) {
     }
   }
 
-  @Override
-public synchronized void trackConditionalCacheHit() {
+  public synchronized void trackConditionalCacheHit() {
     hitCount++;
   }
 

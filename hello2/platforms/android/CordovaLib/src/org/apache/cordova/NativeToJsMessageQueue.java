@@ -283,8 +283,7 @@ public class NativeToJsMessageQueue {
     /** Uses webView.loadUrl("javascript:") to execute messages. */
     private class LoadUrlBridgeMode extends BridgeMode {
         final Runnable runnable = new Runnable() {
-            @Override
-			public void run() {
+            public void run() {
                 String js = popAndEncodeAsJs();
                 if (js != null) {
                     webView.loadUrlNow("javascript:" + js);
@@ -301,8 +300,7 @@ public class NativeToJsMessageQueue {
     private class OnlineEventsBridgeMode extends BridgeMode {
         boolean online = false;
         final Runnable runnable = new Runnable() {
-            @Override
-			public void run() {
+            public void run() {
                 if (!queue.isEmpty()) {
                     webView.setNetworkAvailable(online);
                 }

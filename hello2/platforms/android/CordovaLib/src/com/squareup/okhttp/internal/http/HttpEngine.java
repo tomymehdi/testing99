@@ -24,7 +24,6 @@ import com.squareup.okhttp.TunnelRequest;
 import com.squareup.okhttp.internal.Dns;
 import com.squareup.okhttp.internal.Platform;
 import com.squareup.okhttp.internal.Util;
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,7 +31,6 @@ import java.io.OutputStream;
 import java.net.CacheRequest;
 import java.net.CacheResponse;
 import java.net.CookieHandler;
-import java.net.HttpURLConnection;
 import java.net.Proxy;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -44,7 +42,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
-
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSocketFactory;
 
@@ -473,8 +470,8 @@ public class HttpEngine {
     }
 
     if ((responseCode < HTTP_CONTINUE || responseCode >= 200)
-        && responseCode != HttpURLConnection.HTTP_NO_CONTENT
-        && responseCode != HttpURLConnection.HTTP_NOT_MODIFIED) {
+        && responseCode != HttpURLConnectionImpl.HTTP_NO_CONTENT
+        && responseCode != HttpURLConnectionImpl.HTTP_NOT_MODIFIED) {
       return true;
     }
 

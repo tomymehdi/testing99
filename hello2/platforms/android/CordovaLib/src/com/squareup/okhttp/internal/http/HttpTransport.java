@@ -119,8 +119,7 @@ public final class HttpTransport implements Transport {
    * This ensures that the {@code Content-Length} header field receives the
    * proper value.
    */
-  @Override
-public void writeRequestHeaders() throws IOException {
+  public void writeRequestHeaders() throws IOException {
     httpEngine.writingRequestHeaders();
     RawHeaders headersToSend = httpEngine.requestHeaders.getHeaders();
     byte[] bytes = headersToSend.toBytes();
@@ -134,8 +133,7 @@ public void writeRequestHeaders() throws IOException {
     return new ResponseHeaders(httpEngine.uri, headers);
   }
 
-  @Override
-public boolean makeReusable(boolean streamCancelled, OutputStream requestBodyOut,
+  public boolean makeReusable(boolean streamCancelled, OutputStream requestBodyOut,
       InputStream responseBodyIn) {
     if (streamCancelled) {
       return false;
